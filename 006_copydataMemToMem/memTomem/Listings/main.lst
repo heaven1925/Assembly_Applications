@@ -1,0 +1,148 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000 20010000 
+                       RAM1_ADDR
+                               EQU              0x20010000
+    3 00000000 20010100 
+                       RAM2_ADDR
+                               EQU              0x20010100
+    4 00000000         
+    5 00000000         
+    6 00000000                 AREA             myCode, CODE,READONLY
+    7 00000000                 ENTRY
+    8 00000000                 EXPORT           __main
+    9 00000000         
+   10 00000000         __main
+   11 00000000 F000 F803       BL               FILL
+   12 00000004 F000 F80B       BL               COPY
+   13 00000008         
+   14 00000008 E7FE    Stop    B                Stop
+   15 0000000A         
+   16 0000000A         
+   17 0000000A         
+   18 0000000A 490B    FILL    LDR              R1,= RAM1_ADDR
+   19 0000000C F04F 000A       MOV              R0,#10
+   20 00000010 4A0A            LDR              R2,=0xDEADBEEF
+   21 00000012         
+   22 00000012 600A    L1      STR              R2,[R1]
+   23 00000014 F101 0104       ADD              R1,R1,#4
+   24 00000018 1E40            SUBS             R0,R0,#1
+   25 0000001A D1FA            BNE              L1
+   26 0000001C 4770            BX               LR
+   27 0000001E         
+   28 0000001E 4906    COPY    LDR              R1,=RAM1_ADDR
+   29 00000020 4A07            LDR              R2,=RAM2_ADDR
+   30 00000022 F04F 000A       MOV              R0,#10
+   31 00000026         
+   32 00000026 680B    L2      LDR              R3,[R1]
+   33 00000028 6013            STR              R3,[R2]
+   34 0000002A F101 0104       ADD              R1,R1,#4
+   35 0000002E F102 0204       ADD              R2,R2,#4
+   36 00000032 1E40            SUBS             R0,R0,#1
+   37 00000034 D1F7            BNE              L2
+   38 00000036 4770            BX               LR
+   39 00000038         
+   40 00000038         
+   41 00000038                 END
+              20010000 
+              DEADBEEF 
+              20010100 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_CORTEX_M -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+COPY 0000001E
+
+Symbol: COPY
+   Definitions
+      At line 28 in file main.s
+   Uses
+      At line 12 in file main.s
+Comment: COPY used once
+FILL 0000000A
+
+Symbol: FILL
+   Definitions
+      At line 18 in file main.s
+   Uses
+      At line 11 in file main.s
+Comment: FILL used once
+L1 00000012
+
+Symbol: L1
+   Definitions
+      At line 22 in file main.s
+   Uses
+      At line 25 in file main.s
+Comment: L1 used once
+L2 00000026
+
+Symbol: L2
+   Definitions
+      At line 32 in file main.s
+   Uses
+      At line 37 in file main.s
+Comment: L2 used once
+Stop 00000008
+
+Symbol: Stop
+   Definitions
+      At line 14 in file main.s
+   Uses
+      At line 14 in file main.s
+Comment: Stop used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 10 in file main.s
+   Uses
+      At line 8 in file main.s
+Comment: __main used once
+myCode 00000000
+
+Symbol: myCode
+   Definitions
+      At line 6 in file main.s
+   Uses
+      None
+Comment: myCode unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+RAM1_ADDR 20010000
+
+Symbol: RAM1_ADDR
+   Definitions
+      At line 2 in file main.s
+   Uses
+      At line 18 in file main.s
+      At line 28 in file main.s
+
+RAM2_ADDR 20010100
+
+Symbol: RAM2_ADDR
+   Definitions
+      At line 3 in file main.s
+   Uses
+      At line 29 in file main.s
+Comment: RAM2_ADDR used once
+2 symbols
+346 symbols in table

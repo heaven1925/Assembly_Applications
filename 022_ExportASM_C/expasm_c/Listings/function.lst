@@ -1,0 +1,47 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000         
+    3 00000000                 AREA             |.text| , CODE, READONLY
+    4 00000000                 EXPORT           Number
+    5 00000000         
+    6 00000000         Number
+    7 00000000 F04F 0079       MOV              R0, #121
+    8 00000004 4770            BX               LR
+    9 00000006 00 00           ALIGN
+   10 00000008                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\function.d -o.\objects\function.o -I.\RTE\_Target_
+1 -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Kei
+l\STM32F7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="_
+_MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ S
+ETA 1" --predefine="STM32F746xx SETA 1" --list=.\listings\function.lst function
+.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 3 in file function.s
+   Uses
+      None
+Comment: .text unused
+Number 00000000
+
+Symbol: Number
+   Definitions
+      At line 6 in file function.s
+   Uses
+      At line 4 in file function.s
+Comment: Number used once
+2 symbols
+337 symbols in table

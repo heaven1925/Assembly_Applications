@@ -1,0 +1,128 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000        0 
+                       COUNT   RN               R0
+    2 00000000        1 
+                       MAX     RN               R1
+    3 00000000        2 
+                       POINTER RN               R2
+    4 00000000        3 
+                       NEXT    RN               R3
+    5 00000000         
+    6 00000000                 AREA             myData, DATA, READONLY
+    7 00000000 0000000A 
+              0000000B 
+              0000000C 
+              0000000D 
+              0000000E 
+              0000000F MYDATA  DCD              10, 11, 12, 13, 14, 15
+    8 00000018         
+    9 00000018                 AREA             myCode, CODE, READONLY
+   10 00000000                 ENTRY
+   11 00000000                 EXPORT           __main
+   12 00000000         __main
+   13 00000000 F04F 0006       MOV              COUNT,  #6
+   14 00000004 F04F 0100       MOV              MAX, #0
+   15 00000008 4A04            LDR              POINTER, =MYDATA
+   16 0000000A         
+   17 0000000A         
+   18 0000000A 6813    AGAIN   LDR              NEXT, [POINTER] ; adresteki deg
+                                                            eri NEXT yaz
+   19 0000000C 4299            CMP              MAX, NEXT   ; NEXT ile MAX kars
+                                                            ilastir
+   20 0000000E D200            BHS              CTNU        ; Eger kücükse dall
+                                                            an
+   21 00000010 4619            MOV              MAX, NEXT   ; --> En büyük bulu
+                                                            ndu..
+   22 00000012         
+   23 00000012 F102 0204 
+                       CTNU    ADD              POINTER, POINTER, #4 
+                                                            ; Sonraki adres
+   24 00000016 1E40            SUBS             COUNT, COUNT, #1 
+                                                            ; Count 1 azalt
+   25 00000018 D1F7            BNE              AGAIN       ; Süreci tekrarla
+   26 0000001A         
+   27 0000001A E7FE    STOP    B                STOP
+   28 0000001C                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MYDATA 00000000
+
+Symbol: MYDATA
+   Definitions
+      At line 7 in file main.s
+   Uses
+      At line 15 in file main.s
+Comment: MYDATA used once
+myData 00000000
+
+Symbol: myData
+   Definitions
+      At line 6 in file main.s
+   Uses
+      None
+Comment: myData unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+AGAIN 0000000A
+
+Symbol: AGAIN
+   Definitions
+      At line 18 in file main.s
+   Uses
+      At line 25 in file main.s
+Comment: AGAIN used once
+CTNU 00000012
+
+Symbol: CTNU
+   Definitions
+      At line 23 in file main.s
+   Uses
+      At line 20 in file main.s
+Comment: CTNU used once
+STOP 0000001A
+
+Symbol: STOP
+   Definitions
+      At line 27 in file main.s
+   Uses
+      At line 27 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 12 in file main.s
+   Uses
+      At line 11 in file main.s
+Comment: __main used once
+myCode 00000000
+
+Symbol: myCode
+   Definitions
+      At line 9 in file main.s
+   Uses
+      None
+Comment: myCode unused
+5 symbols
+348 symbols in table

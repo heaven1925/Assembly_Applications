@@ -1,0 +1,114 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 AREA             myCode, CODE, READONLY
+    3 00000000                 ENTRY
+    4 00000000                 EXPORT           __main
+    5 00000000         __main
+    6 00000000 4806            LDR              R0, =A
+    7 00000002 F04F 0137       MOV              R1, #55
+    8 00000006 6001            STR              R1, [R0]
+    9 00000008         
+   10 00000008 4805            LDR              R0, =D
+   11 0000000A F04F 012C       MOV              R1, #44
+   12 0000000E 6001            STR              R1, [R0]
+   13 00000010         
+   14 00000010 4804            LDR              R0, =C
+   15 00000012 F04F 0121       MOV              R1, #33
+   16 00000016 6001            STR              R1, [R0]
+   17 00000018         
+   18 00000018 E7FE    STOP    B                STOP
+   19 0000001A         
+   20 0000001A 00 00 00000000 
+              00000000 
+              00000000         AREA             myData, DATA , READWRITE
+   21 00000000         ; Allocate 4 Byte in memory
+   22 00000000 00 00 00 
+              00       A       SPACE            4
+   23 00000004 00 00 00 
+              00       D       SPACE            4
+   24 00000008 00 00 00 
+              00       C       SPACE            4
+   25 0000000C         
+   26 0000000C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_CortexM4 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STOP 00000018
+
+Symbol: STOP
+   Definitions
+      At line 18 in file main.s
+   Uses
+      At line 18 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 4 in file main.s
+Comment: __main used once
+myCode 00000000
+
+Symbol: myCode
+   Definitions
+      At line 2 in file main.s
+   Uses
+      None
+Comment: myCode unused
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+A 00000000
+
+Symbol: A
+   Definitions
+      At line 22 in file main.s
+   Uses
+      At line 6 in file main.s
+Comment: A used once
+C 00000008
+
+Symbol: C
+   Definitions
+      At line 24 in file main.s
+   Uses
+      At line 14 in file main.s
+Comment: C used once
+D 00000004
+
+Symbol: D
+   Definitions
+      At line 23 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: D used once
+myData 00000000
+
+Symbol: myData
+   Definitions
+      At line 20 in file main.s
+   Uses
+      None
+Comment: myData unused
+4 symbols
+344 symbols in table

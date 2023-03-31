@@ -1,0 +1,81 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             myCode, CODE, READONLY
+    2 00000000                 EXPORT           __main
+    3 00000000                 ENTRY
+    4 00000000         
+    5 00000000         __main
+    6 00000000 480E            LDR              R0, =0xE000ED88
+    7 00000002 6801            LDR              R1, [R0]
+    8 00000004 F441 0170       ORR              R1, R1, #(0XF<<20)
+    9 00000008 6001            STR              R1, [R0]
+   10 0000000A F20F 0114 
+              F101 0100        ADRL             R1, ConstantTable
+   11 00000012 ED91 1A05       VLDR.F           S2, [R1, #20] ; pi
+   12 00000016 EDD1 1A03       VLDR.F           S3, [R1, #12] ; 4
+   13 0000001A EE61 1A21       VMUL.F           S3, S2,S3   ; pi*4
+   14 0000001E         
+   15 0000001E E7FE    STOP    B                STOP
+   16 00000020         
+   17 00000020         ; IEEE-754 FLOATING POINT CONVERTOR    
+   18 00000020         ConstantTable
+   19 00000020 3F800000        DCD              0x3F800000  ; 1.0
+   20 00000024 40000000        DCD              0x40000000  ; 2.0
+   21 00000028 80000000        DCD              0x80000000  ; -0.0
+   22 0000002C 41200000        DCD              0x41200000  ; 10.0
+   23 00000030 42C80000        DCD              0x42C80000  ; 100.0
+   24 00000034 40490FDA        DCD              0x40490FDA  ; pi
+   25 00000038 402DF854        DCD              0x402DF854  ; e
+   26 0000003C         
+   27 0000003C                 END
+              E000ED88 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ConstantTable 00000020
+
+Symbol: ConstantTable
+   Definitions
+      At line 18 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: ConstantTable used once
+STOP 0000001E
+
+Symbol: STOP
+   Definitions
+      At line 15 in file main.s
+   Uses
+      At line 15 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 2 in file main.s
+Comment: __main used once
+myCode 00000000
+
+Symbol: myCode
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: myCode unused
+4 symbols
+341 symbols in table

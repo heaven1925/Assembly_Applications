@@ -1,0 +1,72 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             |.text|, CODE , READONLY
+    2 00000000                 IMPORT           Adder
+    3 00000000                 IMPORT           num
+    4 00000000                 EXPORT           __main
+    5 00000000                 ENTRY
+    6 00000000         __main
+    7 00000000 4902            LDR              R1, =num
+    8 00000002 F04F 0064       MOV              R0, #100
+    9 00000006 6008            STR              R0, [R1]
+   10 00000008 F7FF FFFE       BL               Adder
+   11 0000000C         
+   12 0000000C                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+.text 00000000
+
+Symbol: .text
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: .text unused
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 6 in file main.s
+   Uses
+      At line 4 in file main.s
+Comment: __main used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+Adder 00000000
+
+Symbol: Adder
+   Definitions
+      At line 2 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: Adder used once
+num 00000000
+
+Symbol: num
+   Definitions
+      At line 3 in file main.s
+   Uses
+      At line 7 in file main.s
+Comment: num used once
+2 symbols
+341 symbols in table

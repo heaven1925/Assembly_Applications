@@ -1,0 +1,81 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ; REGISTERS NOT USE EQU
+    2 00000000 00000334 
+                       NUM     EQU              0x334
+    3 00000000         
+    4 00000000        1 
+                       VAL1    RN               R1
+    5 00000000        2 
+                       VAL2    RN               R2
+    6 00000000        3 
+                       SUM     RN               R3
+    7 00000000         
+    8 00000000                 AREA             RN, CODE, READONLY
+    9 00000000                 ENTRY
+   10 00000000                 EXPORT           __main
+   11 00000000         __main
+   12 00000000 F44F 714D       MOV              VAL1, #NUM  ;
+   13 00000004 F44F 724D       MOV              VAL2, #NUM  ;
+   14 00000008 EB01 0302       ADD              SUM, VAL1, VAL2
+   15 0000000C         
+   16 0000000C E7FE    STOP    B                STOP
+   17 0000000E                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_m4 -IC:\Keil_v5
+\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DF
+P\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLIB SETA
+ 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" --prede
+fine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+RN 00000000
+
+Symbol: RN
+   Definitions
+      At line 8 in file main.s
+   Uses
+      None
+Comment: RN unused
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 16 in file main.s
+   Uses
+      At line 16 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 11 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: __main used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+NUM 00000334
+
+Symbol: NUM
+   Definitions
+      At line 2 in file main.s
+   Uses
+      At line 12 in file main.s
+      At line 13 in file main.s
+
+1 symbol
+342 symbols in table

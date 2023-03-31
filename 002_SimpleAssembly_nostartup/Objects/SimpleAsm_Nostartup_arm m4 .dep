@@ -1,0 +1,2 @@
+Dependencies for Project 'SimpleAsm_Nostartup', Target 'arm m4 ': (DO NOT MODIFY !)
+F (.\main.s)(0x6215D7B9)(--cpu Cortex-M4 --li -g --apcs=interwork -I.\RTE\_arm_m4_-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\Device\ARM\ARMCM4\Include-IC:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 524" --pd "ARMCM4 SETA 1"--list .\listings\main.lst --xref -o .\objects\main.o --depend .\objects\main.d)

@@ -1,0 +1,86 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             myCode, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000                 EXPORT           __main
+    4 00000000         __main
+    5 00000000 4808            LDR              R0, =SIGN_DATA
+    6 00000002 F04F 0309       MOV              R3, #9
+    7 00000006 F04F 0200       MOV              R2, #0
+    8 0000000A         
+    9 0000000A F990 1000 
+                       LOOP    LDRSB            R1, [R0]
+   10 0000000E 440A            ADD              R2, R2, R1
+   11 00000010 F101 0001       ADD              R0, R1, #1  ; Byte size oldugu 
+                                                            için
+   12 00000014 1E5B            SUBS             R3, R3, #1
+   13 00000016 D1F8            BNE              LOOP
+   14 00000018         
+   15 00000018 E7FE    STOP    B                STOP
+   16 0000001A         
+   17 0000001A 0D F6 09 
+              0E EE F7 
+              0C ED 10 SIGN_DATA
+                               DCB              13,-10,9,14,-18,-9,12,-19,16
+   18 00000023 00              ALIGN
+   19 00000024         
+   20 00000024                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+LOOP 0000000A
+
+Symbol: LOOP
+   Definitions
+      At line 9 in file main.s
+   Uses
+      At line 13 in file main.s
+Comment: LOOP used once
+SIGN_DATA 0000001A
+
+Symbol: SIGN_DATA
+   Definitions
+      At line 17 in file main.s
+   Uses
+      At line 5 in file main.s
+Comment: SIGN_DATA used once
+STOP 00000018
+
+Symbol: STOP
+   Definitions
+      At line 15 in file main.s
+   Uses
+      At line 15 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 4 in file main.s
+   Uses
+      At line 3 in file main.s
+Comment: __main used once
+myCode 00000000
+
+Symbol: myCode
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: myCode unused
+5 symbols
+342 symbols in table

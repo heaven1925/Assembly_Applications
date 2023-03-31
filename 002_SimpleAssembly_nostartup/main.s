@@ -1,0 +1,24 @@
+;; CODE WITHOUT NO STARTUP
+
+STACK		EQU		0x00000100	
+		AREA 	STACK, NOINT, READWRITE, ALIGN=3
+		
+StackMem	SPACE	STACK
+		AREA	RESET, DATA, READONLY
+		EXPORT 	__Vectors
+		
+__Vectors
+		DCD 	StackMem +STACK
+		DCD 	Reset_Handler
+		
+		AREA 	AnaKod, CODE, READONLY, ALIGN=2
+		ENTRY
+		EXPORT 	Reset_Handler
+		
+Reset_Handler
+		MOV		R3, #0x1234
+		MOV		R4, #0x1234
+		ADD		R5, R4, R3
+	
+STOP 	B 		STOP
+		END

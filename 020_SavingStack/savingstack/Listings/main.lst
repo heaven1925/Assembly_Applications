@@ -1,0 +1,65 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             cmplxStack, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000                 EXPORT           __main
+    4 00000000         
+    5 00000000         __main
+    6 00000000         
+    7 00000000 4C03            LDR              R4, =0xBABEFACE
+    8 00000002 4D04            LDR              R5, =0xDEEDBEEF
+    9 00000004 4E04            LDR              R6, =0xC0DEF0DE
+   10 00000006 4F05            LDR              R7, =0xFADEFEED
+   11 00000008         
+   12 00000008 B5F0            STMDB            SP! , {R4-R7, LR}
+   13 0000000A BDF0            LDMIA            SP! , {R4-R7, PC}
+   14 0000000C         
+   15 0000000C E7FE    STOP    B                STOP
+   16 0000000E 00 00           ALIGN
+   17 00000010                 END
+              BABEFACE 
+              DEEDBEEF 
+              C0DEF0DE 
+              FADEFEED 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STOP 0000000C
+
+Symbol: STOP
+   Definitions
+      At line 15 in file main.s
+   Uses
+      At line 15 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 3 in file main.s
+Comment: __main used once
+cmplxStack 00000000
+
+Symbol: cmplxStack
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: cmplxStack unused
+3 symbols
+340 symbols in table

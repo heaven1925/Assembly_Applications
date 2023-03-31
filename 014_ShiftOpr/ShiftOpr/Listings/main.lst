@@ -1,0 +1,55 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 AREA             simpleShift, CODE, READONLY
+    3 00000000                 ENTRY
+    4 00000000                 EXPORT           __main
+    5 00000000         __main
+    6 00000000 F04F 0004       MOV              R0, #0x04
+    7 00000004 EA4F 0140       LSL              R1, R0, #1
+    8 00000008 EA4F 0270       ROR              R2, R0, #1
+    9 0000000C EA40 0340       ORR              R3, R0, R0, LSL #1
+   10 00000010 E7FE    STOP    B                STOP
+   11 00000012                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+STOP 00000010
+
+Symbol: STOP
+   Definitions
+      At line 10 in file main.s
+   Uses
+      At line 10 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 4 in file main.s
+Comment: __main used once
+simpleShift 00000000
+
+Symbol: simpleShift
+   Definitions
+      At line 2 in file main.s
+   Uses
+      None
+Comment: simpleShift unused
+3 symbols
+338 symbols in table

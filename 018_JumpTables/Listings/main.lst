@@ -1,0 +1,127 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             jumpTable, CODE, READONLY
+    2 00000000                 EXPORT           __main
+    3 00000000                 ENTRY
+    4 00000000         
+    5 00000000 00000002 
+                       num     EQU              2
+    6 00000000         
+    7 00000000         
+    8 00000000         __main
+    9 00000000 F04F 0000       MOV              R0, #0
+   10 00000004 F04F 0103       MOV              R1, #3
+   11 00000008 F04F 0202       MOV              R2, #2
+   12 0000000C         
+   13 0000000C F000 F801       BL               arithfunc
+   14 00000010 E7FE    STOP    B                STOP
+   15 00000012         
+   16 00000012         
+   17 00000012         arithfunc
+   18 00000012 2802            CMP              R0, #num
+   19 00000014 BF28 46F7       MOVHS            PC,LR       ; return
+   20 00000018 F20F 0308 
+              F103 0300        ADRL             R3, JumpTable
+   21 00000020 F853 F020       LDR              PC, [R3,R0, LSL #2]
+   22 00000024         
+   23 00000024         JumpTable
+   24 00000024 00000000        DCD              DoAdd
+   25 00000028 00000000        DCD              DoSubb
+   26 0000002C         
+   27 0000002C         DoAdd
+   28 0000002C EB01 0002       ADD              R0,R1,R2
+   29 00000030 4770            BX               LR
+   30 00000032         DoSubb
+   31 00000032 EBA1 0002       SUB              R0,R1,R2
+   32 00000036 4770            BX               LR
+   33 00000038         
+   34 00000038                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --apcs=
+interwork --depend=.\objects\main.d -o.\objects\main.o -I.\RTE\_Target_1 -IC:\K
+eil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM32F
+7xx_DFP\2.14.1\Drivers\CMSIS\Device\ST\STM32F7xx\Include --predefine="__MICROLI
+B SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ SETA 1" -
+-predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+DoAdd 0000002C
+
+Symbol: DoAdd
+   Definitions
+      At line 27 in file main.s
+   Uses
+      At line 24 in file main.s
+Comment: DoAdd used once
+DoSubb 00000032
+
+Symbol: DoSubb
+   Definitions
+      At line 30 in file main.s
+   Uses
+      At line 25 in file main.s
+Comment: DoSubb used once
+JumpTable 00000024
+
+Symbol: JumpTable
+   Definitions
+      At line 23 in file main.s
+   Uses
+      At line 20 in file main.s
+Comment: JumpTable used once
+STOP 00000010
+
+Symbol: STOP
+   Definitions
+      At line 14 in file main.s
+   Uses
+      At line 14 in file main.s
+Comment: STOP used once
+__main 00000000
+
+Symbol: __main
+   Definitions
+      At line 8 in file main.s
+   Uses
+      At line 2 in file main.s
+Comment: __main used once
+arithfunc 00000012
+
+Symbol: arithfunc
+   Definitions
+      At line 17 in file main.s
+   Uses
+      At line 13 in file main.s
+Comment: arithfunc used once
+jumpTable 00000000
+
+Symbol: jumpTable
+   Definitions
+      At line 1 in file main.s
+   Uses
+      None
+Comment: jumpTable unused
+7 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+num 00000002
+
+Symbol: num
+   Definitions
+      At line 5 in file main.s
+   Uses
+      At line 18 in file main.s
+Comment: num used once
+1 symbol
+343 symbols in table
